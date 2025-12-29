@@ -1,0 +1,31 @@
+server:
+  port: 8080 # 服务启动端口
+
+spring:
+  datasource:
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    # 连接 Docker 里的 MySQL
+    url: jdbc:mysql://localhost:3306/lark_db?useUnicode=true&characterEncoding=utf-8&serverTimezone=Asia/Shanghai
+    username: root
+    password: root
+  data:
+    redis:
+      host: localhost
+      port: 6379
+      database: 0
+  kafka:
+    bootstrap-servers: localhost:9092
+    consumer:
+      group-id: lark-group #消费者组
+      auto-offset-reset: earliest # 从最早的开始读取
+    template:
+      default-topic: note-topic # 默认发送话题
+# MyBatis Plus 配置：打印 SQL
+mybatis-plus:
+  configuration:
+    log-impl: org.apache.ibatis.logging.stdout.StdOutImpl
+
+lark:
+  jwt:
+    secret: "This_Is_A_Super_Secure_Key_For_Lark_2025"
+    expiration: 86400000

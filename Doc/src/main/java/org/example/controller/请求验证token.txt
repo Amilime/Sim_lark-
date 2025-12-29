@@ -1,0 +1,56 @@
+// 定义一个变量存 Token
+window.myToken = "";
+
+fetch('http://localhost:8080/user/login', {
+    method: 'POST',
+    headers: { 'Content-Type': 'application/json' },
+    body: JSON.stringify({
+        username: "admin",  // 数据库里初始化的账号
+        password: "123456"  // 数据库里初始化的密码
+    })
+})
+.then(response => response.json())
+.then(data => {
+    console.log("🔌 登录接口返回:", data);
+
+    // 如果 code 是 200，说明登录成功
+    if (data.code === 200) {
+        // 根据你的 Result 结构，token 应该在 data.data 里
+        window.myToken = data.data;
+        console.log("✅ 成功！Token 已保存，它是:", window.myToken);
+        console.log("👉 既然有了 Token，现在你可以运行第三步的代码了！");
+    } else {
+        console.error("❌ 登录失败，请检查账号密码或数据库");
+    }
+});
+
+第二段：
+fetch('http://localhost:8080/doc/create', {
+    method: 'POST',
+    headers: {
+        'Content-Type': 'application/json',
+        // 【关键点】这里就是拦截器 LoginInterceptor 要检查的东西！
+        // 如果不带这一行，或者 token 也是错的，服务器会直接返回 401
+        'Authorization': window.myToken
+    },
+    body: JSON.stringify({
+        title: "我的绝密文档.pdf",
+        docType: 0,
+        fileKey: "http://go-server:8081/files/secret.pdf"
+        // 注意：我们没传 ownerId，因为后端会从 Token 里自己解析
+    })
+})
+.then(response => {
+    console.log("📡 HTTP状态码:", response.status);
+    return response.json();
+})
+.then(data => {
+    console.log("📄 创建结果:", data);
+    if (data.code === 200) {
+        console.log("🎉 恭喜！文档创建成功！ID:", data.data.docId);
+    } else {
+        console.error("❌ 创建失败:", data.msg);
+    }
+});
+
+终端检查数据库：docker exec -it mysql_lark mysql -uroot -proot lark_db -e "SELECT * FROM document ORDER BY id DESC LIMIT 1;"
