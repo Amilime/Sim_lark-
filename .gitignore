@@ -1,0 +1,36 @@
+# --- Java (Maven/IntelliJ) ---
+target/
+*.class
+.idea/
+*.iml
+*.log
+
+# --- Go (Lark) ---
+# 忽略编译后的二进制文件 (假设你的exe叫 lark.exe 或 main.exe)
+*.exe
+*.dll
+# 忽略上传的图片文件夹 (保留文件夹但忽略内容)
+lark/uploads/*
+!lark/uploads/.gitkeep
+
+# --- Frontend (Node/Vite) ---
+node_modules/
+dist/
+.env.local
+.DS_Store
+
+# --- System ---
+Thumbs.db
+
+# --- Docker Data (绝对不要上传!) ---
+# 忽略 Doc 目录下的 docker 数据文件夹
+Doc/docker/data/
+**/docker/data/
+
+# 忽略 MySQL 的日志和二进制文件
+*.ibd
+*.frn
+ibdata1
+ib_buffer_pool
+ib_logfile*
+binlog.*
