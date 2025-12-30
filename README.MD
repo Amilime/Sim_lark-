@@ -172,3 +172,7 @@ go run .
    - Go (`main.go`) 和 Java (`WebConfig.java`) 均已配置允许跨域，支持前端 `localhost:5173` 访问。
 4. **文件删除路径**：
    - Java 执行物理删除时，使用相对路径寻找兄弟目录 `../lark/uploads`。请保持项目目录结构 `Doc` 和 `lark` 并列，否则会导致删除失败。
+
+![Language Count](https://img.shields.io/github/languages/count/Amilime/Sim_lark-)
+![Top Language](https://img.shields.io/github/languages/top/Amilime/Sim_lark-)
+![Repo Size](https://img.shields.io/github/repo-size/Amilime/Sim_lark-)

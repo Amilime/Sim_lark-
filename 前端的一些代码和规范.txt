@@ -1,0 +1,32 @@
+初始化脚手架：npm create vite@latest web -- --template vue
+依赖：npm install vue-router@4 pinia axios element-plus @element-plus/icons-vue sass
+
+Vue Router: 管理页面跳转。
+
+Pinia: 状态管理（存用户信息和 Token）。
+
+Axios: 发送网络请求。
+
+Element Plus: 漂亮的 UI 组件库。
+
+Sass: 写 CSS 更方便。
+
+目录结构：
+src/
+├── api/             # 存放 API 接口定义 (把 URL 统一管理)
+│   ├── user.js      # 用户相关 (登录/注册)
+│   └── doc.js       # 文档相关 (列表/上传)
+├── assets/          # 静态资源 (图片/样式)
+├── components/      # 公共组件
+├── router/          # 路由配置
+│   └── index.js
+├── stores/          # 状态管理 (Pinia - 存 Token 和用户信息)
+│   └── user.js
+├── utils/           # 工具类
+│   └── request.js   # Axios 封装 (统一加 Token)
+├── views/           # 页面文件
+│   ├── Login.vue    # 登录页
+│   ├── Dashboard.vue# 文档列表主页
+│   └── Editor.vue   # 协同编辑页
+├── App.vue          # 根组件
+└── main.js          # 入口文件

@@ -8,13 +8,31 @@
     "build": "vite build",
     "preview": "vite preview"
   },
-  "devDependencies": {
-    "vite": "^5.4.11"
-  },
   "dependencies": {
-    "quill": "^2.0.3",
-    "y-quill": "^1.0.0",
-    "y-websocket": "^3.0.0",
-    "yjs": "^13.6.28"
+    "@element-plus/icons-vue": "^2.3.2",
+    "@tiptap/extension-collaboration": "^2.10.0",
+    "@tiptap/extension-collaboration-cursor": "^2.10.0",
+    "@tiptap/extension-image": "^2.10.0",
+    "@tiptap/pm": "^2.10.0",
+    "@tiptap/starter-kit": "^2.10.0",
+    "@tiptap/vue-3": "^2.10.0",
+    "axios": "^1.13.2",
+    "element-plus": "^2.13.0",
+    "jwt-decode": "^4.0.0",
+    "pinia": "^3.0.4",
+    "sass": "^1.97.1",
+    "vue": "^3.5.12",
+    "vue-router": "^4.6.4",
+    "y-websocket": "^1.5.0",
+    "yjs": "^13.6.0"
+  },
+  "devDependencies": {
+    "@vitejs/plugin-vue": "^5.1.4",
+    "vite": "^5.4.10"
+  },
+  "overrides": {
+    "yjs": "^13.6.0",
+    "y-websocket": "^1.5.0",
+    "y-prosemirror": "^1.2.0"
   }
 }

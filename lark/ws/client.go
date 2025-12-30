@@ -62,18 +62,20 @@ func (c *HubClient) WritePump() {
 			return
 		}
 
-		// 写回浏览器
+		// 🟢 修正后：每次只发一条，绝对不拼接！
 		w, err := c.Conn.NextWriter(websocket.BinaryMessage)
 		if err != nil {
 			return
 		}
+
 		w.Write(message)
 
-		// 这一步是为了把积压的消息一次性发完（优化）
-		n := len(c.Send)
-		for i := 0; i < n; i++ {
-			w.Write(<-c.Send)
-		}
+		//  删掉下面这段代码
+		// n := len(c.Send)
+		// for i := 0; i < n; i++ {
+		//    w.Write(<-c.Send)
+		// }
+		// 删掉上面这段代码
 
 		if err := w.Close(); err != nil {
 			return
